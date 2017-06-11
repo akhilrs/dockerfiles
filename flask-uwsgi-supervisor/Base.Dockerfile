@@ -5,7 +5,7 @@ MAINTAINER Akhil R S "https://akhil.rs"
 RUN apk add --no-cache bash supervisor py2-pip libpq postgresql-dev gcc python-dev musl-dev linux-headers \
 	&& pip2 install --upgrade pip \
 	&& pip2 install uwsgi
-  
+
 # application folder
 ENV APP_DIR /app
 
@@ -14,4 +14,3 @@ WORKDIR ${APP_DIR}
 VOLUME [${APP_DIR}]
 
 EXPOSE 5000
-
