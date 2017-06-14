@@ -16,7 +16,11 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV HOME /root
-RUN apt-get -y install libxslt1-dev libxml2-dev postgis wkhtmltopdf xvfb
-RUN echo -e '#!/bin/bash\nxvfb-run -a --server- args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf -q $*' > /usr/bin/wkhtmltopdf.sh
-RUN chmod a+x /usr/bin/wkhtmltopdf.sh
-RUN ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
+RUN apt-get -y install libxslt1-dev libxml2-dev postgis xvfb
+# RUN echo -e '#!/bin/bash\nxvfb-run -a --server- args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf -q $*' > /usr/bin/wkhtmltopdf.sh
+# RUN chmod a+x /usr/bin/wkhtmltopdf.sh
+# RUN ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
+
+RUN wget https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN tar xvJf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+RUN cp wkhtmltox/bin/wkhtmlto* /usr/bin/
