@@ -5,9 +5,10 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
+  apt-get -y install locales && \
   locale-gen en_US.UTF-8
 RUN apt-get install -y curl git htop man software-properties-common \
-    unzip vim wget python-pip libpq-dev python-dev libjpeg-dev locales
+    unzip vim wget python-pip libpq-dev python-dev libjpeg-dev
 RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable -y
 RUN apt-get update
 
