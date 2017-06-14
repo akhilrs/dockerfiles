@@ -8,7 +8,8 @@ RUN \
   apt-get -y install locales && \
   locale-gen en_US.UTF-8
 RUN apt-get install -y curl git htop man software-properties-common \
-    unzip vim wget python-pip libpq-dev python-dev libjpeg-dev
+    unzip vim wget python-pip libpq-dev python-dev libjpeg-dev supervisor \
+    pgbouncer libxslt1-dev libxml2-dev postgis xvfb
 RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable -y
 RUN apt-get update
 
@@ -16,10 +17,6 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV HOME /root
-RUN apt-get -y install libxslt1-dev libxml2-dev postgis xvfb
-# RUN echo -e '#!/bin/bash\nxvfb-run -a --server- args="-screen 0, 1024x768x24" /usr/bin/wkhtmltopdf -q $*' > /usr/bin/wkhtmltopdf.sh
-# RUN chmod a+x /usr/bin/wkhtmltopdf.sh
-# RUN ln -s /usr/bin/wkhtmltopdf.sh /usr/local/bin/wkhtmltopdf
 
 RUN wget https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN tar xvJf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
