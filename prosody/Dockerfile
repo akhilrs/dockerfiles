@@ -11,8 +11,8 @@ MAINTAINER Akhil R S "https://akhil.rs"
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         libidn11 \
-        liblua5.1-expat0 \
-        libssl1.0.0 \
+        liblua5.3-dev \
+        libssl-dev \
         lua-bitop \
         lua-dbi-mysql \
         lua-dbi-postgresql \
@@ -23,7 +23,7 @@ RUN apt-get update \
         lua-sec \
         lua-socket \
         lua-zlib \
-        lua5.1 \
+        lua5.3 \
         openssl \
         ca-certificates \
     && rm -rf /var/lib/apt/lists/*
